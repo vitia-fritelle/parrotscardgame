@@ -41,6 +41,9 @@ main > h1 {
     position: relative;
     margin-right: 34px;
     margin-bottom: 34px;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
 }
 
 .card:before {
@@ -55,6 +58,10 @@ main > h1 {
     background-repeat: no-repeat;
     height: 100px;
     width: 100px;
+}
+
+.card > .front-face {
+    transform: rotateY(180deg);
 }
 
 @media screen and (max-width: 572px) {
