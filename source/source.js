@@ -30,8 +30,11 @@ const setCards = (imageList) => {
     ul.innerHTML = '';
     imageList.forEach(imageURL => {
         ul.innerHTML += `
-        <li class="card">
-            <img class="front-face" src="${imageURL}" alt="FRENTE">
+        <li class="card" onclick="flipCard(this)">
+            <div class="back-face"></div>
+            <div class="front-face">
+                <img src="${imageURL}" alt="FRENTE">
+            </div>
         </li>
         `;
     });
@@ -57,5 +60,13 @@ setCards(
         )
     )
 );
+
+const flipCard = (element) => {
+    const backFace = element.querySelector(".back-face");
+    const frontFace = element.querySelector(".front-face");
+    backFace.classList.toggle("back-face-flipped");
+    frontFace.classList.toggle("front-face-flipped");
+    return null;
+}
 
 

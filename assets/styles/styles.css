@@ -41,27 +41,46 @@ main > h1 {
     position: relative;
     margin-right: 34px;
     margin-bottom: 34px;
+}
+
+.back-face,.front-face {
+    position: absolute;
+    z-index: 1;
     backface-visibility: hidden;
     transition: all .5s;
     transform-style: preserve-3d;
-}
-
-.card:before {
-    content: "";
-    position: absolute;
-    z-index: 1;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+}
+
+.back-face {
     background-image: url("../img/front.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100px;
     width: 100px;
+    transform: translateX(-50%) translateY(-50%);
 }
 
-.card > .front-face {
-    transform: rotateY(180deg);
+.front-face {
+    transform: rotateY(-180deg);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+}
+
+.front-face > img {
+    height: 100%;
+    width: 100%;
+}
+
+.back-face-flipped {
+    transform: translateX(-50%) translateY(-50%) rotateY(-180deg);
+}
+
+.front-face-flipped {
+    transform: translateX(-50%) translateY(-50%) rotateY(0deg);
 }
 
 @media screen and (max-width: 572px) {
