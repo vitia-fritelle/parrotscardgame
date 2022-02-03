@@ -51,6 +51,7 @@ main > h1 {
     transform-style: preserve-3d;
     top: 50%;
     left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
 
 .back-face {
@@ -59,7 +60,6 @@ main > h1 {
     background-repeat: no-repeat;
     height: 100px;
     width: 100px;
-    transform: translateX(-50%) translateY(-50%);
 }
 
 .front-face {
@@ -67,7 +67,7 @@ main > h1 {
     display:flex;
     align-items: center;
     justify-content: center;
-    width: 100px;
+    width: 80px;
 }
 
 .front-face > img {
