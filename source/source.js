@@ -65,6 +65,7 @@ const flipCard = (element) => {
     backFace.classList.toggle("back-face-flipped");
     frontFace.classList.toggle("front-face-flipped");
     element.classList.toggle("found");
+    element.classList.toggle("card-flipped");
     return null;
 }
 
@@ -80,9 +81,7 @@ const action = () => {
         const img1 = getImageSource(auxList[0]);
         const img2 = getImageSource(auxList[1]);
         if(img1 !== img2) {
-            auxList.forEach(selectedElement => {
-                flipCard(selectedElement);
-            });
+            unFlipCards();
         }
         clearAuxList();
     }
@@ -94,14 +93,26 @@ const getImageSource = (element) => {
     return element.querySelector(".front-face").querySelector("img").src;
 }
 
-const interaction = (element) => {
+const unFlipCards = () => {
+
+    auxList.forEach(selectedElement => {
+        flipCard(selectedElement);
+    });
+    return null;
+}
+
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+const interaction = async (element) => {
 
     if (!element.classList.contains("found")){
         numberOfFlips++;
         flipCard(element);
         auxList.push(element);
-        //setTimeout não está esperando o tempo para executar a função
-        setTimeout(action(),10000);
+        //Não bloqueia por algum motivo.
+        await sleep(1000);
+        action();
+        console.log("Como pode?")
     }
     if(countFoundCards() === numberOfCards) {
         alert(`Você ganhou em ${numberOfFlips} jogadas!`)
@@ -111,6 +122,8 @@ const interaction = (element) => {
         if(continueGame()){
             numberOfCards = getNumberOfCards();
             prepareGame();
+            clearInterval(timeInterval);
+            timeInterval = setInterval(createClock,1000);
         } else {
             disableCards();
         }
@@ -145,6 +158,13 @@ const disableCards = () => {
     return null;
 }
 
+const createClock = () => {
+
+    const clock = document.querySelector("#time"); 
+    clock.innerText = `${seconds++}`;
+    return null;
+}
+
 const parrotsImages = [
     "./assets/img/bobrossparrot.gif",
     "./assets/img/explodyparrot.gif",
@@ -160,3 +180,6 @@ let numberOfFlips = 0;
 let numberOfCards = getNumberOfCards();
 prepareGame();
 showGamePoints();
+let seconds = 0;
+let timeInterval = setInterval(createClock,1000);
+

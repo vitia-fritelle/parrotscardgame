@@ -63,16 +63,14 @@ main > h1 {
 }
 
 .front-face {
-    transform: rotateY(-180deg);
+    transform: translateX(-50%) translateY(-50%) rotateY(-180deg);
     display:flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
 }
 
 .front-face > img {
-    height: 100%;
-    width: 100%;
+    width: 80px;
 }
 
 .back-face-flipped {
@@ -81,6 +79,11 @@ main > h1 {
 
 .front-face-flipped {
     transform: translateX(-50%) translateY(-50%) rotateY(0deg);
+}
+
+#clock {
+    display: flex;
+    align-items: center;
 }
 
 @media screen and (max-width: 572px) {
