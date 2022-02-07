@@ -108,12 +108,13 @@ const interaction = (element) => {
         (auxList.length === 2) && setTimeout(action,1000);
     }
     if(countFoundCards() === numberOfCards) {
-        alert(`Você ganhou em ${numberOfFlips} jogadas e demorou ${seconds}!`)
+        alert(`Você ganhou em ${numberOfFlips} jogadas e demorou ${seconds} segundos!`)
         gameCounter++;
         showGamePoints();
         numberOfFlips = 0;
         if(continueGame()){
             numberOfCards = getNumberOfCards();
+            seconds = 0;
             prepareGame();
             clearInterval(timeInterval);
             timeInterval = setInterval(createClock,1000);
@@ -154,7 +155,7 @@ const disableCards = () => {
 const createClock = () => {
 
     const clock = document.querySelector("#time"); 
-    clock.innerText = `${seconds++}`;
+    clock.innerText = `${++seconds}`;
     return null;
 }
 
