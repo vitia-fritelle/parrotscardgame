@@ -77,14 +77,10 @@ const clearAuxList = () => {
 
 const action = () => {
 
-    if (auxList.length === 2){
-        const img1 = getImageSource(auxList[0]);
-        const img2 = getImageSource(auxList[1]);
-        if(img1 !== img2) {
-            unFlipCards();
-        }
-        clearAuxList();
-    }
+    const img1 = getImageSource(auxList[0]);
+    const img2 = getImageSource(auxList[1]);
+    img1 !== img2 && unFlipCards();
+    clearAuxList();
     return null;
 }
 
@@ -101,21 +97,16 @@ const unFlipCards = () => {
     return null;
 }
 
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+const interaction = (element) => {
 
-const interaction = async (element) => {
-
-    if (!element.classList.contains("found")){
+    if (!element.classList.contains("found") && (auxList.length < 2)){
         numberOfFlips++;
         flipCard(element);
         auxList.push(element);
-        //Não bloqueia por algum motivo.
-        await sleep(1000);
-        action();
-        console.log("Como pode?")
+        (auxList.length === 2) && setTimeout(action,1000);
     }
     if(countFoundCards() === numberOfCards) {
-        alert(`Você ganhou em ${numberOfFlips} jogadas!`)
+        alert(`Você ganhou em ${numberOfFlips} jogadas e demorou ${seconds}!`)
         gameCounter++;
         showGamePoints();
         numberOfFlips = 0;
