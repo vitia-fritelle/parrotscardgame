@@ -20,7 +20,6 @@ main {
 
 main > h1 {
     margin-top: 40px;
-    margin-bottom: 47px;
 }
 
 #cards {
@@ -34,10 +33,6 @@ main > h1 {
 .card {
     width: 117px;
     height: 146px;
-    background-color: #A7E9AF;
-    border: 1px solid #99CEA8;
-    box-sizing: border-box;
-    border-radius: 5px;
     position: relative;
     margin-right: 34px;
     margin-bottom: 34px;
@@ -52,12 +47,23 @@ main > h1 {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
 }
 
 .back-face {
-    background-image: url("../img/front.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-face > img {
     height: 100px;
     width: 100px;
 }
@@ -86,11 +92,39 @@ main > h1 {
     align-items: center;
 }
 
+#utils {
+    font-size: small;
+    color: black;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 146px;
+    box-sizing: border-box;
+    height: 60px;
+}
+
+#clock, #time, #game-points {
+    height: 30px;
+    width: 100%;
+}
+
+#time, #game-points {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 @media screen and (max-width: 572px) {
     body {
         font-size: 36px;
         line-height: 42px;
         text-align: center;
+    }
+
+    #utils {
+        padding: 0 109px;
     }
 
     #cards {

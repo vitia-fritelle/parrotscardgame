@@ -35,7 +35,9 @@ const setCards = (imageList) => {
 
         ul.innerHTML += `
         <li class="card" onclick="interaction(this)">
-            <div class="back-face"></div>
+            <div class="back-face">
+                <img src=${"./assets/img/front.png"} alt="TRÁS">
+            </div>
             <div class="front-face">
                 <img src="${imageURL}" alt="FRENTE">
             </div>
