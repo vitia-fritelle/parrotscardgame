@@ -34,11 +34,11 @@ const setCards = (imageList) => {
     imageList.forEach(imageURL => {
 
         ul.innerHTML += `
-        <li class="card" onclick="interaction(this)">
-            <div class="back-face">
+        <li class="card" data-identifier="card" onclick="interaction(this)">
+            <div class="back-face" data-identifier="back-face">
                 <img src=${"./assets/img/front.png"} alt="TRÁS">
             </div>
-            <div class="front-face">
+            <div class="front-face" data-identifier="front-face">
                 <img src="${imageURL}" alt="FRENTE">
             </div>
         </li>
@@ -120,6 +120,7 @@ const interaction = (element) => {
             timeInterval = setInterval(createClock,1000);
         } else {
             disableCards();
+            clearInterval(timeInterval);
         }
         
     }
