@@ -9,6 +9,7 @@ body {
     font-size: 56px;
     line-height: 66px;
     letter-spacing: -0.004em;
+    position: relative;
 }
 
 main {
@@ -93,7 +94,7 @@ main > h1 {
 }
 
 #utils {
-    font-size: small;
+    font-size: 16px;
     color: black;
     display: flex;
     flex-flow: column nowrap;
@@ -105,7 +106,16 @@ main > h1 {
     height: 60px;
 }
 
-#clock, #time, #game-points {
+#clock {
+    font-size: 16px;
+    color: black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(-50px) translateY(115px);
+}
+
+#time, #game-points {
     height: 30px;
     width: 100%;
 }
@@ -124,7 +134,8 @@ main > h1 {
     }
 
     #utils {
-        padding: 0 109px;
+        margin: 0 auto;
+        padding: 0 50px;
     }
 
     #cards {
